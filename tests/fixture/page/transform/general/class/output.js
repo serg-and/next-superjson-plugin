@@ -1,5 +1,5 @@
-import { withSuperJSONPage as _withSuperJSONPage } from "next-superjson-plugin/tools";
-import { withSuperJSONProps as _withSuperJSONProps } from "next-superjson-plugin/tools";
+import { withSuperJSONPage as _withSuperJSONPage } from "superjson-next/tools";
+import { withSuperJSONProps as _withSuperJSONProps } from "superjson-next/tools";
 export const getServerSideProps = _withSuperJSONProps(async function() {}, []);
 class Page {
     render() {

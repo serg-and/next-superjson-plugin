@@ -39,9 +39,9 @@ export default function ServerComponent() {
 Install packages first:
 
 ```sh
-npm install superjson next-superjson-plugin
+npm install superjson superjson-next
 # or Yarn
-yarn add superjson next-superjson-plugin
+yarn add superjson superjson-next
 ```
 
 Add the plugin into `next.config.js`
@@ -50,7 +50,7 @@ Add the plugin into `next.config.js`
 // next.config.js
 module.exports = {
   experimental: {
-    swcPlugins: [["next-superjson-plugin", {}]],
+    swcPlugins: [["superjson-next", {}]],
   },
 };
 ```
@@ -60,7 +60,7 @@ module.exports = {
 You can use the `excluded` option to exclude specific properties from serialization.
 
 ```js
-['next-superjson-plugin', { excluded: ["someProp"] }],
+['superjson-next', { excluded: ["someProp"] }],
 ```
 
 #### With pages router
@@ -69,7 +69,7 @@ There is currently an issue in `Next@15`, to use this plugin with pages router a
 This will make the plugin only work inside the page router and is thus not compatible with projects using both routers.
 
 ```js
-['next-superjson-plugin', { forcePageRouter: true }],
+['superjson-next', { forcePageRouter: true }],
 ```
 
 ## How it works
@@ -96,7 +96,7 @@ sequenceDiagram
 
 Plugin always ensures compatibility with [Next.js Canary version](https://nextjs.org/docs/messages/opening-an-issue) only.
 
-[Leave an Issue](https://github.com/orionmiz/next-superjson-plugin/issues)
+[Leave an Issue](https://github.com/serg-and/superjson-next.git/issues)
 
 ## Special Thanks
 

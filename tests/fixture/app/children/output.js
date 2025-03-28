@@ -1,5 +1,5 @@
-import { serialize } from "next-superjson-plugin/tools";
-import SuperJSONComponent from "next-superjson-plugin/client";
+import { serialize } from "superjson-next/tools";
+import SuperJSONComponent from "superjson-next/client";
 import ClientComponent from "./ClientComponent";
 export default function Page() {
     const rest = {};

@@ -14,15 +14,15 @@ use crate::{utils::*, Config};
 static SSG_EXPORTS: &[&str; 2] = &["getStaticProps", "getServerSideProps"];
 static INITIAL_PROPS: &str = "getInitialProps";
 
-// import { withSuperJSONProps as _withSuperJSONProps } from "next-superjson-plugin/tools";
+// import { withSuperJSONProps as _withSuperJSONProps } from "superjson-next/tools";
 static SUPERJSON_PROPS_IMPORTED: &str = "withSuperJSONProps";
 pub static SUPERJSON_PROPS_LOCAL: &str = "_withSuperJSONProps";
 
-// import { withSuperJSONInitProps as _withSuperJSONInitProps } from "next-superjson-plugin/tools";
+// import { withSuperJSONInitProps as _withSuperJSONInitProps } from "superjson-next/tools";
 static SUPERJSON_INIT_PROPS_IMPORTED: &str = "withSuperJSONInitProps";
 pub static SUPERJSON_INIT_PROPS_LOCAL: &str = "_withSuperJSONInitProps";
 
-// import { withSuperJSONPage as _withSuperJSONPage } from "next-superjson-plugin/tools";
+// import { withSuperJSONPage as _withSuperJSONPage } from "superjson-next/tools";
 static SUPERJSON_PAGE_IMPORTED: &str = "withSuperJSONPage";
 pub static SUPERJSON_PAGE_LOCAL: &str = "_withSuperJSONPage";
 

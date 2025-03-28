@@ -25,7 +25,7 @@ pub fn superjson_import_decl(superjson_import_name: &str) -> ModuleItem {
         })],
         src: Box::new(Str {
             span: DUMMY_SP,
-            value: "next-superjson-plugin/tools".into(),
+            value: "superjson-next/tools".into(),
             raw: None,
         }),
     }))

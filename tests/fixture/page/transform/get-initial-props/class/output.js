@@ -1,5 +1,5 @@
-import { withSuperJSONPage as _withSuperJSONPage } from "next-superjson-plugin/tools";
-import { withSuperJSONInitProps as _withSuperJSONInitProps } from "next-superjson-plugin/tools";
+import { withSuperJSONPage as _withSuperJSONPage } from "superjson-next";
+import { withSuperJSONInitProps as _withSuperJSONInitProps } from "superjson-next/tools";
 import React from 'react';
 class Page extends React.Component {
     static getInitialProps = _withSuperJSONInitProps(async function(ctx) {

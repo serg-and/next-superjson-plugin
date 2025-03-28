@@ -16,8 +16,8 @@ static SERIALIZER_FUNCTION: &str = "serialize";
 static DESERIALIZER_COMPONENT: &str = "SuperJSONComponent";
 static DESERIALIZER_PROPS_ATTR: &str = "props";
 static DESERIALIZER_PROPS_COMPONENT: &str = "component";
-static TOOLS_SRC: &str = "next-superjson-plugin/tools";
-static CLIENT_SRC: &str = "next-superjson-plugin/client";
+static TOOLS_SRC: &str = "superjson-next/tools";
+static CLIENT_SRC: &str = "superjson-next/client";
 
 struct AppTransformer {
     transformed: bool,

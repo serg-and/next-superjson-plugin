@@ -1,11 +1,11 @@
 [package]
 name = "next_superjson"
-version = "0.6.3"
+version = "0.7.0"
 edition = "2021"
-authors = ["JH.Lee <contact@jins.dev>"]
+authors = ["https://github.com/serg-and"]
 description = "SWC Plugin of SuperJSON for Next.js"
 license = "MIT/Apache-2.0"
-repository = "https://github.com/orionmiz/next-superjson-plugin"
+repository = "https://github.com/serg-and/superjson-next"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

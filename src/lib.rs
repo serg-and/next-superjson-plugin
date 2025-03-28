@@ -11,22 +11,22 @@ pub mod app;
 pub mod page;
 mod utils;
 
-static MISSING_CONFIG: &str = "next-superjson-plugin: Missing config,
+static MISSING_CONFIG: &str = "superjson-next: Missing config,
 Provide a plugin config in your next.config.(js|ts) like:
 
 experimental: {
   swcPlugins: [
-    ['next-superjson-plugin', { router: 'APP' | 'PAGE' }]
+    ['superjson-next', { router: 'APP' | 'PAGE' }]
   ],
 },
 ";
 
-static BAD_CONFIG: &str = "next-superjson-plugin: Failed to parse config,
+static BAD_CONFIG: &str = "superjson-next: Failed to parse config,
 Provide a plugin config in your next.config.(js|ts) like:
 
 experimental: {
   swcPlugins: [
-    ['next-superjson-plugin', { router: 'APP' | 'PAGE' }]
+    ['superjson-next', { router: 'APP' | 'PAGE' }]
   ],
 },
 ";
