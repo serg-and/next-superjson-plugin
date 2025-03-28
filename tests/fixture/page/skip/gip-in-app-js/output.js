@@ -42,5 +42,7 @@ class App extends (_Component = _react.default.Component) {
     }
 }
 App.origGetInitialProps = appGetInitialProps;
-App.getInitialProps = _withSuperJSONInitProps(appGetInitialProps, []);
+App.getInitialProps = _withSuperJSONInitProps(appGetInitialProps, [
+    "smth"
+]);
 exports.default = App;

@@ -9,5 +9,7 @@ Page.getInitialProps = _withSuperJSONInitProps(async (ctx)=>{
     return {
         stars: json.stargazers_count
     };
-}, []);
+}, [
+    "smth"
+]);
 export default _withSuperJSONPage(Page);

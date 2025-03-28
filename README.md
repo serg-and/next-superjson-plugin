@@ -1,9 +1,40 @@
+> [!NOTE]
+> This is a fork of [next-superjson-plugin](https://github.com/blitz-js/next-superjson-plugin) that adds support for the latest versions of [Next.js](https://github.com/vercel/next.js).
+
+<br>
+
 <h1 align="middle"> Next SuperJSON Plugin</h1>
 <h3 align="middle">🔌 SuperJSON Plugin for Next.js (SWC)</h3>
+
+## Usage
+
+Install packages first:
+
+```sh
+npm install superjson superjson-next
+# or Yarn
+yarn add superjson superjson-next
+```
+
+> [!IMPORTANT]
+> Because of a bug in Next.js (see [#72019](https://github.com/vercel/next.js/issues/72019)), this plugin can only run in either app router or page router mode.
+
+Add the plugin into `next.config.js`. And select the type of [Router](https://nextjs.org/docs#app-router-vs-pages-router) you are using.
+
+```js
+// next.config.js
+module.exports = {
+  experimental: {
+    swcPlugins: [["superjson-next", { router: "APP" | "PAGE" }]],
+  },
+};
+```
 
 ### /pages (Pages Directory)
 
 ```jsx
+// For pages router no further configuration is required.
+
 export default function Page({ date }) {
   return <div>Today is {date.toDateString()}</div>;
 }
@@ -34,42 +65,12 @@ export default function ServerComponent() {
 
 - Provides `data-superjson` attribute for [Server Component > Client Component Serialization](https://beta.nextjs.org/docs/rendering/server-and-client-components#passing-props-from-server-to-client-components-serialization).
 
-## Usage
-
-Install packages first:
-
-```sh
-npm install superjson superjson-next
-# or Yarn
-yarn add superjson superjson-next
-```
-
-Add the plugin into `next.config.js`
-
-```js
-// next.config.js
-module.exports = {
-  experimental: {
-    swcPlugins: [["superjson-next", {}]],
-  },
-};
-```
-
 ### Options
 
 You can use the `excluded` option to exclude specific properties from serialization.
 
 ```js
-['superjson-next', { excluded: ["someProp"] }],
-```
-
-#### With pages router
-
-There is currently an issue in `Next@15`, to use this plugin with pages router add this option:
-This will make the plugin only work inside the page router and is thus not compatible with projects using both routers.
-
-```js
-['superjson-next', { forcePageRouter: true }],
+["superjson-next", { router: "APP" | "PAGE", excluded: ["someProp"] }],
 ```
 
 ## How it works

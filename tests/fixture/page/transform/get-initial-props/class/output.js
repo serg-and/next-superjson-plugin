@@ -1,4 +1,4 @@
-import { withSuperJSONPage as _withSuperJSONPage } from "superjson-next";
+import { withSuperJSONPage as _withSuperJSONPage } from "superjson-next/tools";
 import { withSuperJSONInitProps as _withSuperJSONInitProps } from "superjson-next/tools";
 import React from 'react';
 class Page extends React.Component {
@@ -8,7 +8,9 @@ class Page extends React.Component {
         return {
             stars: json.stargazers_count
         };
-    }, []);
+    }, [
+        "smth"
+    ]);
     render() {
         return <div>Next stars: {this.props.stars}</div>;
     }

@@ -20,6 +20,7 @@ fn fixture_page(input: PathBuf) {
         &|_| {
             visit_mut_pass(transform_page(Config {
                 router: Router::Page,
+                excluded: vec!["smth".to_string()],
             }))
         },
         &input,
@@ -40,6 +41,7 @@ fn fixture_app(input: PathBuf) {
         &|_| {
             visit_mut_pass(transform_app(Config {
                 router: Router::App,
+                excluded: vec!["smth".to_string()],
             }))
         },
         &input,

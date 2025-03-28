@@ -63,10 +63,9 @@ struct PageTransformer {
     has_multiple_props: bool,
 }
 
-pub fn transform_page(_: Config) -> impl VisitMut {
+pub fn transform_page(config: Config) -> impl VisitMut {
     PageTransformer {
-        // excluded: config.excluded,
-        excluded: Default::default(),
+        excluded: config.excluded,
 
         props: Default::default(),
         page: Default::default(),

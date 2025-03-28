@@ -7,5 +7,7 @@ Page.getInitialProps = _withSuperJSONInitProps(()=>{
     return {
         date: new Date()
     };
-}, []);
+}, [
+    "smth"
+]);
 export default _withSuperJSONPage(Page);

@@ -12,23 +12,41 @@ pub mod page;
 mod utils;
 
 static MISSING_CONFIG: &str = "superjson-next: Missing config,
+
 Provide a plugin config in your next.config.(js|ts) like:
 
-experimental: {
-  swcPlugins: [
-    ['superjson-next', { router: 'APP' | 'PAGE' }]
-  ],
-},
+module.exports = {
+  experimental: {
+    swcPlugins: [
+      [
+        'superjson-next',
+        {
+          router: 'APP' | 'PAGE',
+          excluded: ['someProps'], (optional)
+        }
+      ]
+    ],
+  }
+}
 ";
 
 static BAD_CONFIG: &str = "superjson-next: Failed to parse config,
+
 Provide a plugin config in your next.config.(js|ts) like:
 
-experimental: {
-  swcPlugins: [
-    ['superjson-next', { router: 'APP' | 'PAGE' }]
-  ],
-},
+module.exports = {
+  experimental: {
+    swcPlugins: [
+      [
+        'superjson-next',
+        {
+          router: 'APP' | 'PAGE',
+          excluded: ['someProps'], (optional)
+        }
+      ]
+    ],
+  }
+}
 ";
 
 #[derive(Debug, Clone, Deserialize)]
@@ -44,9 +62,8 @@ pub enum Router {
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct Config {
     pub router: Router,
-    // disabled because of Next.js bug, see below
-    // #[serde(default)]
-    // pub excluded: Vec<String>,
+    #[serde(default)]
+    pub excluded: Vec<String>,
 }
 
 // pub enum DirType {
