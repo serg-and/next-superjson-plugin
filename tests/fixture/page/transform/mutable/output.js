@@ -3,5 +3,5 @@ import { withSuperJSONProps as _withSuperJSONProps } from "next-superjson-plugin
 let foo = 1;
 foo = 2;
 export { foo as getServerSideProps };
-foo = _withSuperJSONProps(() => {}, ["smth"]);
-export default _withSuperJSONPage(() => {});
+foo = _withSuperJSONProps(()=>{}, []);
+export default _withSuperJSONPage(()=>{});

@@ -6,3 +6,4 @@ target
 /tools.*
 *.wasm
 .DS_Store
+.vscode

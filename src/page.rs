@@ -63,9 +63,10 @@ struct PageTransformer {
     has_multiple_props: bool,
 }
 
-pub fn transform_page(config: Config) -> impl VisitMut {
+pub fn transform_page(_: Config) -> impl VisitMut {
     PageTransformer {
-        excluded: config.excluded,
+        // excluded: config.excluded,
+        excluded: Default::default(),
 
         props: Default::default(),
         page: Default::default(),
@@ -601,9 +602,14 @@ impl PageTransformer {
                     match decl {
                         Decl::Fn(fn_decl) => SSG_EXPORTS.contains(&&*fn_decl.ident.sym),
                         Decl::Var(var_decl) => {
-                            let pos = var_decl.decls.iter().position(|decl| {
-                                SSG_EXPORTS.contains(&&*decl.name.as_ident().unwrap().sym)
-                            });
+                            let pos =
+                                var_decl
+                                    .decls
+                                    .iter()
+                                    .position(|decl| match decl.name.as_ident() {
+                                        Some(idn) => SSG_EXPORTS.contains(&&*idn.sym),
+                                        None => false,
+                                    });
 
                             if self.props.export.decl.is_none() {
                                 self.props.export.decl = pos;

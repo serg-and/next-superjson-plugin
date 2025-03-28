@@ -32,7 +32,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "next": "^13.0 || ^14.0",
+    "next": "^15.2",
     "superjson": "^1 || ^2"
   },
   "dependencies": {
@@ -40,9 +40,9 @@
   },
   "devDependencies": {
     "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/react": "18.3.1",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
-    "next": "^13",
     "prettier": "^2.7.1",
     "superjson": "^2",
     "typescript": "^5.3.3"
