@@ -97,7 +97,7 @@ sequenceDiagram
 
 Plugin always ensures compatibility with [Next.js Canary version](https://nextjs.org/docs/messages/opening-an-issue) only.
 
-[Leave an Issue](https://github.com/serg-and/superjson-next.git/issues)
+[Leave an Issue](https://github.com/serg-and/superjson-next/issues)
 
 ## Special Thanks
 
