@@ -1,6 +1,6 @@
 [package]
 name = "next_superjson"
-version = "0.7.1"
+version = "0.8.0"
 edition = "2021"
 authors = ["https://github.com/serg-and"]
 description = "SWC Plugin of SuperJSON for Next.js"
@@ -13,7 +13,8 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 serde = "1.0.144"
 serde_json = "1.0.85"
-swc_core = { version = "16.10.*", features = [
+# match next@15.4.0
+swc_core = { version = "26.4.*", features = [
     "ecma_plugin_transform",
     "ecma_ast",
     "ecma_utils",

@@ -1,5 +1,8 @@
+use std::path::{Component, Path};
+
 use serde::Deserialize;
 use swc_core::{
+    common::plugin::metadata::TransformPluginMetadataContextKind,
     ecma::{ast::*, visit::*},
     plugin::{plugin_transform, proxies::TransformPluginProgramMetadata},
 };
@@ -11,25 +14,6 @@ pub mod app;
 pub mod page;
 mod utils;
 
-static MISSING_CONFIG: &str = "superjson-next: Missing config,
-
-Provide a plugin config in your next.config.(js|ts) like:
-
-module.exports = {
-  experimental: {
-    swcPlugins: [
-      [
-        'superjson-next',
-        {
-          router: 'APP' | 'PAGE',
-          excluded: ['someProps'], (optional)
-        }
-      ]
-    ],
-  }
-}
-";
-
 static BAD_CONFIG: &str = "superjson-next: Failed to parse config,
 
 Provide a plugin config in your next.config.(js|ts) like:
@@ -40,7 +24,6 @@ module.exports = {
       [
         'superjson-next',
         {
-          router: 'APP' | 'PAGE',
           excluded: ['someProps'], (optional)
         }
       ]
@@ -49,50 +32,32 @@ module.exports = {
 }
 ";
 
-#[derive(Debug, Clone, Deserialize)]
-#[serde(rename_all = "UPPERCASE")]
-pub enum Router {
-    #[serde(alias = "app", alias = "App")]
-    App,
-    #[serde(alias = "page", alias = "Page")]
-    Page,
-}
-
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Default)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct Config {
-    pub router: Router,
     #[serde(default)]
     pub excluded: Vec<String>,
 }
 
-// pub enum DirType {
-//     Page,
-//     App,
-// }
+pub enum DirType {
+    Page,
+    App,
+}
 
 #[plugin_transform]
 pub fn process_transform(program: Program, metadata: TransformPluginProgramMetadata) -> Program {
-    let plugin_config_str = &metadata
-        .get_transform_plugin_config()
-        .expect(MISSING_CONFIG);
-    let config = serde_json::from_str::<Config>(&plugin_config_str).expect(BAD_CONFIG);
+    let config = match metadata.get_transform_plugin_config() {
+        Some(plugin_config_str) => {
+            serde_json::from_str::<Config>(&plugin_config_str).expect(BAD_CONFIG)
+        }
+        None => Config::default(),
+    };
 
-    match config.router {
-        Router::App => program.apply(&mut visit_mut_pass(transform_app(config))),
-        Router::Page => program.apply(&mut visit_mut_pass(transform_page(config))),
-    }
-
-    /*
-    // Automatic detection of router type is disabled because of a bug in Next.js
-    // Re enable this code once Next.js fixes this issue
-    // https://github.com/vercel/next.js/issues/72019
-
-    let raw_cwd = _metadata
+    let raw_cwd = metadata
         .get_context(&TransformPluginMetadataContextKind::Cwd)
         .unwrap();
 
-    let raw_path = _metadata
+    let raw_path = metadata
         .get_context(&TransformPluginMetadataContextKind::Filename)
         .unwrap();
 
@@ -131,19 +96,11 @@ pub fn process_transform(program: Program, metadata: TransformPluginProgramMetad
         // consider server components outside the app directory
         let dir_type = if is_page { DirType::Page } else { DirType::App };
 
-        let config = serde_json::from_str::<Config>(
-            &_metadata
-                .get_transform_plugin_config()
-                .unwrap_or_else(|| "{}".to_string()),
-        )
-        .expect("Failed to parse plugin config");
-
         match dir_type {
-            DirType::Page => program.fold_with(&mut as_folder(transform_page(config))),
-            DirType::App => program.fold_with(&mut as_folder(transform_app(config))),
+            DirType::Page => program.apply(&mut visit_mut_pass(transform_page(config))),
+            DirType::App => program.apply(&mut visit_mut_pass(transform_app(config))),
         }
     } else {
         program
     }
-    */
 }

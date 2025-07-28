@@ -6,7 +6,7 @@ use swc_core::ecma::{
 };
 use testing::fixture;
 
-use next_superjson::{app::transform_app, page::transform_page, Config, Router};
+use next_superjson::{app::transform_app, page::transform_page, Config};
 
 #[fixture("tests/fixture/page/**/code.js")]
 fn fixture_page(input: PathBuf) {
@@ -19,7 +19,6 @@ fn fixture_page(input: PathBuf) {
         }),
         &|_| {
             visit_mut_pass(transform_page(Config {
-                router: Router::Page,
                 excluded: vec!["smth".to_string()],
             }))
         },
@@ -40,7 +39,6 @@ fn fixture_app(input: PathBuf) {
         }),
         &|_| {
             visit_mut_pass(transform_app(Config {
-                router: Router::App,
                 excluded: vec!["smth".to_string()],
             }))
         },
