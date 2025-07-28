@@ -6,7 +6,7 @@
 <h1 align="middle"> Next SuperJSON Plugin</h1>
 <h3 align="middle">🔌 SuperJSON Plugin for Next.js (SWC)</h3>
 
-## Usage
+## Installation
 
 Install packages first:
 
@@ -16,19 +16,25 @@ npm install superjson superjson-next
 yarn add superjson superjson-next
 ```
 
-> [!IMPORTANT]
-> Because of a bug in Next.js (see [#72019](https://github.com/vercel/next.js/issues/72019)), this plugin can only run in either app router or page router mode.
-
-Add the plugin into `next.config.js`. And select the type of [Router](https://nextjs.org/docs#app-router-vs-pages-router) you are using.
+Add the plugin into `next.config.js`
 
 ```js
 // next.config.js
 module.exports = {
   experimental: {
-    swcPlugins: [["superjson-next", { router: "APP" | "PAGE" }]],
+    swcPlugins: [["superjson-next", {}]],
   },
 };
 ```
+
+### Versions
+
+| package version | Next.js versions | notes                                       |
+| :-------------- | :--------------- | :------------------------------------------ |
+| `0.8.0`         | `15.4.*`         |                                             |
+| `0.7.1`         | `15.0.*`         | requires choosing router type (see release) |
+
+## Usage
 
 ### /pages (Pages Directory)
 
@@ -63,15 +69,15 @@ export default function ServerComponent() {
 }
 ```
 
-- Provides `data-superjson` attribute for [Server Component > Client Component Serialization](https://beta.nextjs.org/docs/rendering/server-and-client-components#passing-props-from-server-to-client-components-serialization).
-
 ### Options
 
 You can use the `excluded` option to exclude specific properties from serialization.
 
 ```js
-["superjson-next", { router: "APP" | "PAGE", excluded: ["someProp"] }],
+['superjson-next', { excluded: ["someProp"] }],
 ```
+
+- Provides `data-superjson` attribute for [Server Component > Client Component Serialization](https://beta.nextjs.org/docs/rendering/server-and-client-components#passing-props-from-server-to-client-components-serialization).
 
 ## How it works
 
