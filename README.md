@@ -29,10 +29,10 @@ module.exports = {
 
 ### Versions
 
-| package version | Next.js versions | notes                                       |
-| :-------------- | :--------------- | :------------------------------------------ |
-| `0.8.0`         | `15.4.*`         |                                             |
-| `0.7.1`         | `15.0.*`         | requires choosing router type (see release) |
+| package version | Next.js versions     | notes                                       |
+| :-------------- | :------------------- | :------------------------------------------ |
+| `0.8.*`         | `^15.4.* \|\| ^16.*` |                                             |
+| `0.7.*`         | `^15.0.*`            | requires choosing router type (see release) |
 
 ## Usage
 
