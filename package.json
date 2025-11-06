@@ -31,7 +31,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "next": "^15.4",
+    "next": "^15.4 || ^16.0",
     "superjson": "^1 || ^2"
   },
   "dependencies": {
