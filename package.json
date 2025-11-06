@@ -1,6 +1,6 @@
 {
   "name": "superjson-next",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Automatically transform your Next.js Pages to use SuperJSON with SWC",
   "author": "https://github.com/serg-and",
   "homepage": "https://github.com/serg-and/superjson-next#readme",
