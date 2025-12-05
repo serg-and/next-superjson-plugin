@@ -1,6 +1,6 @@
 {
   "name": "superjson-next",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Automatically transform your Next.js Pages to use SuperJSON with SWC",
   "author": "https://github.com/serg-and",
   "homepage": "https://github.com/serg-and/superjson-next#readme",
@@ -24,7 +24,7 @@
   },
   "preferUnplugged": true,
   "scripts": {
-    "prepack": "tsc && cp target/wasm32-wasi/release/next_superjson.wasm ./dist",
+    "prepack": "tsc && cp target/wasm32-wasip1/release/next_superjson.wasm ./dist",
     "prepare": "husky install"
   },
   "files": [
