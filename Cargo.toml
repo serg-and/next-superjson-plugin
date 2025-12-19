@@ -1,6 +1,6 @@
 [package]
 name = "next_superjson"
-version = "0.8.3"
+version = "0.8.4"
 edition = "2021"
 authors = ["https://github.com/serg-and"]
 description = "SWC Plugin of SuperJSON for Next.js"
