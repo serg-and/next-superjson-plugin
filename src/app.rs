@@ -150,7 +150,7 @@ impl VisitMut for AppTransformer {
                             Some(JSXAttrValue::JSXFragment(fragment)) => {
                                 Box::new(Expr::JSXFragment(fragment))
                             }
-                            Some(JSXAttrValue::Lit(lit)) => lit.into(),
+                            Some(JSXAttrValue::Str(lit)) => lit.into(),
                             None => Box::new(Expr::Lit(Lit::Bool(Bool {
                                 value: true,
                                 span: DUMMY_SP,
